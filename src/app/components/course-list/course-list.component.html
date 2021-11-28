@@ -1,0 +1,42 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="container mt-3 w-100 mb-5" *ngIf="courses.length > 0; else message">
+  <div class="row">
+    <div class="col col-lg-2" *ngFor="let course of courses">
+      <div class="card">
+        <div class="card-header">
+          <img src="../../../assets/images/graduate.png" class="card-img-top" alt="img-course">
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{course.name}}</h5>
+          <p class="card-text">Début:&nbsp;{{course.start}}</p>
+          <p class="card-text">Durée:&nbsp;{{course.duration}}</p>
+
+          <div class="items">
+            <div *ngFor="let student of studentCourses">
+              <div *ngIf="student.course === course.name">
+                <span class="badge badge-pill badge-warning">{{student.students}}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer mt-4">
+            <a href="#" class="btn btn-outline-dark" [routerLink]="['/create-course']"><i
+                class="fa fa-2x fa-plus-circle" aria-hidden="true"></i></a>
+            <a href="#" class="btn btn-outline-secondary" [routerLink]="['/edit-course', course._id]"><i
+                class="fa fa-2x fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <button class="btn btn-outline-danger" (click)="deleteCourse(course._id)"><i class="fa fa-2x fa fa-trash-o"
+                aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #message>
+  <div class="text-center mt-5 text-secondary">
+    <div>
+      <h3>Aucun cours pour le moment</h3>
+    </div>
+  </div>
+</ng-template>

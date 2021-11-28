@@ -1,0 +1,17 @@
+.container-fluid {
+  background-color: rgba(177, 177, 177, 0.897);
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+

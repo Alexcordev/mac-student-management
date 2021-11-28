@@ -1,0 +1,34 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="container mt-5">
+  <div class="row m-auto">
+    <div class="col-md-12">
+      <app-alert [message]="msg" *ngIf="success" (close)="onHandleClose()"></app-alert>
+      <div class="card">
+        <h5 class="card-header bg-warning"><i class="fa fa-2x fa-user-plus" aria-hidden="true"></i>&nbsp;Profil de l&apos;&eacute;tudiant</h5>
+        <div class="card-body">
+          <form [formGroup]="creationForm" (submit)="createStudent()">
+          <div class="form-group" >
+            <label for="FormControlInput1">Pr&eacute;nom</label>
+            <input type="text" class="form-control" id="FormControlInput1" name="surname" placeholder="John" formControlName="surname" required>
+          </div>
+          <div class="form-group">
+            <label for="FormControlInput1">Nom</label>
+            <input type="text" class="form-control" id="FormControlInput2" name="name" placeholder="Doe" formControlName="name" required>
+          </div>
+          <div class="form-group">
+            <label for="FormControlInput1">Date de naissance</label>
+            <input type="date" class="form-control" id="FormControlInput3" name="dob" placeholder="date de naissance" formControlName="dob" required>
+          </div>
+          <div class="footer">
+            <button type="submit" class="btn btn-secondary btn-submit mt-4 mb-4" [disabled]="creationForm.invalid"><i class="fa fa-2x fa-plus-circle" aria-hidden="true"></i>Ajouter</button>
+            <button type="button" class="btn btn-light btn-submit mt-4 mb-4 ml-2" [routerLink]="['/students']"><i class="fa fa-2x fa-step-backward" aria-hidden="true"></i></button>
+          </div>
+
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

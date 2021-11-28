@@ -1,0 +1,56 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="container-fluid mt-5" *ngIf="course as crs; else loading">
+  <div class="container">
+    <div class="row m-auto">
+      <div class="col-md-12">
+        <app-alert [message]="msg" *ngIf="success" (close)="onHandleClose()"></app-alert>
+        <div class="card">
+          <h5 class="card-header bg-warning"><i class="fa fa-2x fa-user-plus" aria-hidden="true"></i>&nbsp;Profil de
+            l&apos;&eacute;tudiant</h5>
+          <div class="card-body">
+            <form [formGroup]="editForm" #formDirective="ngForm" (submit)="updateCourse(formDirective)">
+              <div class="form-group">
+                <label for="FormControlInput1">Nom</label>
+                <input type="text" class="form-control" id="FormControlInput1" placeholder="Math" formControlName="name"
+                  name="name" [value]="crs.name" required>
+              </div>
+              <div class="form-group">
+                <label for="FormControlInput1">D&eacute;but</label>
+                <input type="text" class="form-control" id="FormControlInput2" placeholder="9:00"
+                  formControlName="start" name="start" [value]="crs.start" required>
+              </div>
+              <div class="form-group">
+                <label for="FormControlInput1">Dur&eacute;e</label>
+                <input type="text" class="form-control" id="FormControlInput3" placeholder="3:00"
+                  formControlName="duration" name="duration" [value]="crs.duration" required>
+              </div>
+              <div class="form-group">
+                <label for="FormControlSelect">Choisir &Eacute;tudiant(s)</label>
+                <select multiple class="form-control" name="registrations" id="registrations"
+                  formControlName="registrations">
+                  <option *ngFor="let student of students" value="{{student.surname + ' ' + student.name}}">
+                    {{student.surname}}&nbsp;{{student.name}}</option>
+                </select>
+              </div>
+              <div class="footer">
+                <button type="submit" class="btn btn-secondary btn-submit mt-4 mb-4"
+                  [disabled]="formDirective.invalid"><i class="fa fa-2x fa-plus-circle"
+                    aria-hidden="true"></i>Modifier</button>
+                <button type="button" class="btn btn-light btn-submit mt-4 mb-4 ml-2" [routerLink]="['/courses']"><i
+                    class="fa fa-2x fa fa-ban" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-danger btn-submit mt-4 mb-4" (click)="deleteCourse(crs._id)"><i
+                    class="fa fa-2x fa-trash" aria-hidden="true"></i></button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-template #loading>
+  loading...
+</ng-template>

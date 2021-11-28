@@ -1,0 +1,28 @@
+
+.card-header {
+  display: flex;
+  align-items: center;
+  color: rgb(65, 65, 65);
+}
+
+.card-body {
+  padding: 40px;
+  box-shadow: 1px 2px 4px #ccc;
+}
+
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+  width: min-content;
+  border: 1px #333 solid;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 5px;
+  margin-bottom: 20px;
+
+}

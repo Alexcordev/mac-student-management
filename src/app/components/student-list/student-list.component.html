@@ -1,0 +1,37 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="container w-100 mt-3 mb-5" *ngIf="students.length > 0; else message">
+  <div class="row">
+    <div class="col col-lg-2" *ngFor="let student of students">
+      <div class="card">
+        <div class="card-header">
+          <img src="../../../assets/images/user-avatar.png" class="card-img-top" alt="img-student">
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{student.surname}}&nbsp;{{student.name}}</h5>
+          <p class="card-text">{{student.dob}}</p>
+
+
+          <div class="items">
+            <div *ngFor="let course of studentCourses">
+              <span class="badge badge-pill badge-warning"
+                *ngIf="course.students === student.surname + ' ' + student.name && course.course !=' '">{{course.course}}</span>
+            </div>
+          </div>
+
+          <div class="footer mt-4">
+            <a href="#" class="btn btn-outline-dark" [routerLink]="['/create-student']"><i
+                class="fa fa-2x fa-plus-circle" aria-hidden="true"></i></a>
+            <a href="#" class="btn btn-outline-secondary" [routerLink]="['/edit-student', student._id]"><i
+                class="fa fa-2x fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <button class="btn btn-outline-danger" (click)="deleteStudent(student._id)"><i
+                class="fa fa-2x fa fa-trash-o" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #message>
+  <p>Aucun étudiant pour le moment</p>
+</ng-template>

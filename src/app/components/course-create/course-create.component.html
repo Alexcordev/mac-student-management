@@ -1,0 +1,48 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="container mt-5">
+  <div class="row m-auto">
+    <div class="col-md-12">
+      <app-alert [message]="msg" *ngIf="success" (close)="onHandleClose()"></app-alert>
+      <div class="card">
+        <h5 class="card-header bg-warning"><i class="fa fa-2x fa-user-plus" aria-hidden="true"></i>&nbsp;Cr&eacute;ation
+          d&apos;un cours</h5>
+        <div class="card-body">
+          <form [formGroup]="creationForm" (submit)="createCourse()">
+            <div class="form-group">
+              <label for="FormControlInput1">Nom</label>
+              <input type="text" class="form-control" id="FormControlInput1" name="name" placeholder="Math 101"
+                formControlName="name" required>
+            </div>
+            <div class="form-group">
+              <label for="FormControlInput2">D&eacute;but</label>
+              <input type="text" class="form-control" id="FormControlInput2" name="start" placeholder="9:00"
+                formControlName="start" required>
+            </div>
+            <div class="form-group">
+              <label for="FormControlInput3">Date de naissance</label>
+              <input type="text" class="form-control" id="FormControlInput3" name="duration" placeholder="3:00"
+                formControlName="duration" required>
+            </div>
+            <div class="form-group">
+              <label for="FormControlSelect">Choisir &Eacute;tudiant(s)</label>
+              <select multiple class="form-control" name="registrations" id="registrations"
+                formControlName="registrations">
+                <option *ngFor="let student of students" value="{{student.surname + ' ' + student.name}}">
+                  {{student.surname}}&nbsp;{{student.name}}</option>
+              </select>
+            </div>
+            <div class="footer">
+              <button type="submit" class="btn btn-secondary btn-submit mt-4 mb-4" [disabled]="creationForm.invalid"><i
+                  class="fa fa-2x fa-plus-circle" aria-hidden="true"></i>Ajouter</button>
+              <button type="button" class="btn btn-light btn-submit mt-4 mb-4 ml-2" [routerLink]="['/courses']"><i
+                  class="fa fa-2x fa-step-backward" aria-hidden="true"></i></button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
