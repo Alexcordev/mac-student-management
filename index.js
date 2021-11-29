@@ -4,7 +4,7 @@ const api = require("./api/mainRoutes/index");
 const auth = require("./auth/routes/index");
 const cors = require("cors");
 const User = require("./auth/models/user");
-
+const config = require('./config');
 const mongoose = require("mongoose");
 const connection = mongoose.connection;
 
@@ -51,8 +51,8 @@ app.use(
   session({
     resave: true,
     saveUninitialized: true,
-    secret: "this is a very top secret that you cannot tell to anyone",
-    name: "student-cookie",
+    secret: config.secret,
+    name: config.cookie
   })
 );
 app.use(passport.initialize());
@@ -110,8 +110,8 @@ app.get('/*', function(req,res) {
 
 // connection to mongoDB
 const uri =
-  "mongodb+srv://AlexCorDev_43:admin@cluster0.gog3c.mongodb.net/schollManagement?retryWrites=true&w=majority";
-mongoose.connect(process.env.MONGODB_URI || uri, {
+
+mongoose.connect(process.env.MONGODB_URI || config.mongoURI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
