@@ -137,8 +137,9 @@ img {
 
   .row {
     flex-direction: row;
-    column-gap: 20px;
-    row-gap: 20px;
-
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 30px;
+    width: 100%;
   }
 }
