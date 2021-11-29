@@ -62,9 +62,15 @@ img {
 }
 @media screen and (max-width: 480px) {
   .card {
-    width: 90%;
+    width: 100%;
+    margin: auto;
   }
   .row {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    column-gap: 0;
+
   }
 }

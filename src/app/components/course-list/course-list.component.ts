@@ -78,7 +78,9 @@ export class CourseListComponent implements OnInit {
       confirmButtonColor: '#333',
     });
     console.log('data', data);
-    this.courses = data;
+    this.coursesService.getCourses().subscribe((data) => {
+      this.courses = data;
+    });
   }
 
   logout() {
