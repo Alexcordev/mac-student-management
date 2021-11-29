@@ -29,6 +29,10 @@ export class AuthService {
     return this.http.post<User>(`${this.baseURL}/register`, user, this.httpOptions);
   }
 
+  isUserLoggedIn() {
+    return this._userIsAuthenticated;
+  }
+
   logout() {
     this._userIsAuthenticated = false;
     return this.http.get(`${this.baseURL}/logout`);

@@ -13,10 +13,10 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.authService._userIsAuthenticated) {
+      if (this.authService.isUserLoggedIn()) {
         return true;
       }
-      window.alert('Vous n\'avez pas la permission de voir cette page');
+      window.alert("Vous n\'avez pas l\'autorisation d\'accéder cette page");
       return false;
   }
 

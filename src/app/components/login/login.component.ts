@@ -11,7 +11,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  user: User = { isUserAuthenticated: false, email: '', password: '' };
+  user: User = { email: '', password: '' };
   message: string = '';
   text: string = '';
   username: any;
@@ -43,13 +43,11 @@ export class LoginComponent implements OnInit {
       showCancelButton: false,
       confirmButtonColor: '#333',
     });
-    this.user.isUserAuthenticated = true;
     this.router.navigate(['/students/', this.user.email]);
     localStorage.setItem('user', JSON.stringify(this.user.email));
   }
 
   loginError(error: any) {
-    this.user.isUserAuthenticated = false;
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
