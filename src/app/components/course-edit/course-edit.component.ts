@@ -80,33 +80,6 @@ export class CourseEditComponent implements OnInit {
     console.log('KO handleError - course NOT updated', error);
   }
 
-  deleteCourse(id: any) {
-    if (id) {
-      let subscription = this.coursesService
-        .deleteCourseById(id)
-        .subscribe((data) => {
-          this.deleteSuccess(data);
-          subscription.unsubscribe();
-        });
-    }
-  }
-
-  deleteSuccess(data: any) {
-    Swal.fire({
-      title: 'Cours supprimé avec succès',
-      text: 'Opération complétée',
-      icon: 'success',
-      showCancelButton: false,
-      confirmButtonColor: '#333',
-    });
-    console.log('data', data);
-    this.router.navigate(['/courses']);
-  }
-
-  deleteError(error: any) {
-    console.log("Course could'nt be deleted", error);
-  }
-
   onHandleClose() {
     this.success = false;
   }

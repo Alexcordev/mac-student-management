@@ -70,7 +70,7 @@ export class StudentListComponent implements OnInit {
 
   refresh(data: any) {
     Swal.fire({
-      title: 'Cours supprimé avec succès',
+      title: 'Étudiant supprimé avec succès',
       text: 'Opération complétée',
       icon: 'success',
       showCancelButton: false,

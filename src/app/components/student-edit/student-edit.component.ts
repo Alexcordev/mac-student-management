@@ -71,41 +71,6 @@ export class StudentEditComponent implements OnInit {
     console.log('KO handleError - student NOT updated', error);
   }
 
-  deleteStudent(id: any) {
-    if (id) {
-      let subscription = this.studentsService.deleteStudentById(id).subscribe(
-        (data) => {
-          console.log(data);
-          this.refresh(data);
-          subscription.unsubscribe();
-        },
-        (err) => {
-          return this.deleteError(err);
-        }
-      );
-    }
-  }
-
-  refresh(data: any) {
-    Swal.fire({
-      title: 'Étudiant supprimé avec succès',
-      text: 'Opération complétée',
-      icon: 'success',
-      showCancelButton: false,
-      confirmButtonColor: '#333',
-    });
-    console.log('data', data);
-    this.router.navigate(['/students']);
-  }
-
-  deleteError(error: any) {
-    if (error.status === 401) {
-      this.router.navigate(['/login']);
-    } else {
-      this.errorFromServer = `Error ${error.status} - ${error.statusText}`;
-    }
-  }
-
   onHandleClose() {
     this.success = false;
   }

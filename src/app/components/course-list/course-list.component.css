@@ -61,5 +61,13 @@ img {
   height: 60px;
 }
 
+@media screen and (max-width: 480px) {
+  .card {
+    width: 90%;
+  }
+  .row {
+    flex-direction: column;
+  }
+}
 
 
