@@ -23,6 +23,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: -1;
   width: 100%;
   height: 60px;
 }
@@ -37,6 +39,8 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
+  z-index: -1;
 }
 
 .items {
@@ -44,6 +48,8 @@ img {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
+  z-index: -1;
   height: 60px;
   overflow-y: auto;
 }
