@@ -71,6 +71,7 @@ img {
     align-items: center;
     margin: auto;
     column-gap: 0;
+    row-gap: 10px;
 
   }
 }
