@@ -8,5 +8,8 @@
 @media screen and (max-width: 480px) {
   .sidebar-container {
     z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
